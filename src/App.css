@@ -7,16 +7,16 @@ body {
 }
 
 /* Login Wrapper Styles */
-.login-wrapper {
+.login-wrapper, .register-wrapper {
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /* Image Section Styles */
 .image-section {
   flex: 1;
-  background-color: #f0f0f0; /* Fallback background color */
-  background-image: url('./assets/11.png'); /* Replace with your image path */
+  background-color: #f0f0f0;
+  background-image: url('./assets/11.png'); 
   background-size: cover;
   background-position: center;
 }
@@ -41,19 +41,19 @@ body {
 }
 
 .form-section h2 {
-  font-family: 'ITC Eras Light', sans-serif; /* Ensure this font is loaded */
-  font-size: 4rem; /* Increased font size */
+  font-family: 'ITC Eras Light', sans-serif; 
+  font-size: 4rem; 
   font-weight: bold;
-  color: #ffffff; /* Text color */
+  color: #ffffff; 
   margin-bottom: 20px;
-  text-align: center; /* Center-align text */
+  text-align: center; 
 }
 
 .form-section h6 {
   font-size: 1.2rem;
   font-weight: 400;
   margin: 0;
-  color: #ffffff; /* Ensure text color matches theme */
+  color: #ffffff; 
 }
 
 /* Error Message Styles */
@@ -80,7 +80,7 @@ body {
 
 .input-wrapper input {
   width: 100%;
-  padding: 0.75rem 3rem 0.75rem 1rem; /* Extra padding on the right for the icon */
+  padding: 0.75rem 3rem 0.75rem 1rem; 
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 50px;
@@ -89,7 +89,7 @@ body {
 
 .input-wrapper i {
   position: absolute;
-  right: 10px; /* Adjust as needed */
+  right: 10px; 
   cursor: pointer;
 }
 
@@ -167,13 +167,13 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
-.form-section .signup {
+.form-section .signup, .login {
   margin-top: 1rem;
   font-size: 1rem; 
   color: #ffffff8d;
 }
 
-.form-section .signup a {
+.form-section .signup a , .login a {
   color: #ffffff;
   text-decoration: none;
 }
