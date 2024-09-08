@@ -14,7 +14,7 @@ pipeline {
 
         //-------------------------- Without Docker -------------------------------
 
-        stage('Install Node.js') {
+       /* stage('Install Node.js') {
             steps {
                 // Install Node.js and npm on the Jenkins agent if necessary
                 sh '''
@@ -45,11 +45,27 @@ pipeline {
                 // Build the React app for production
                 sh 'npm run build'
             }
-        }
+        } */
     // ----------------------------- With Docker ---------------------------------
-        /*{
-            Waiting to dockerize React app
-        }*/
+        
+        stage('Build'){
+            steps{
+                sh "docker build -t ${DOCKER_REGISRTY}/market-react:${BUILD_ID} ."
+            }
+        }
+        
+        stage('Run the Container'){
+            steps{
+                //Run the container
+                sh "docker run -d --name market-react -p 3000:3000 ${DOCKER_REGISRTY}/market-react:${BUILD_ID}"
+               /* //Excute all commands inside the container
+                sh "docker exec -it market-react bash"
+                //Run Unit test
+                sh "npm test"
+                //Exit from container
+                sh "exit" */
+            }
+        }
     }
 
     post {
