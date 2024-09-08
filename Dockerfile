@@ -1,29 +1,26 @@
 #Base image of Nodejs v20.16
-FROM node:20.16.0 AS build
+FROM node:20.16.0
 
-#Set the working directory
+#Set the working directory to -> /app
 WORKDIR /app
 
-#Copy the package.json and package-lock.json to the working directory
-COPY package*.json ./
+#Copy the packing files to the container
+COPY package.json .
 
-#Install node || react Dependencies
+#Install all Dependencies of this React js
 RUN npm install
 
-#Copy the rest of the application to the working directory
+#Install Serve package to serve our static pages
+RUN npm i -g serve
+
+#Copying all projects files to the container
 COPY . .
 
-#Build the app --> the output will be in /dist
+#Application Build
 RUN npm run build
 
-#NGINX to Host the app
-FROM nginx:stable-alpine
+#Access the website from port 3000
+EXPOSE 3000
 
-#Copy the build files to the NGINX defalut directory
-COPY --from=build /app/dist /usr/share/nginx/html
-
-#Expose port 80 to access the app
-EXPOSE 80
-
-#Start NGINX server
-CMD ["nginx", "-g", "daemon off;"]
+#Run the Serve package to run the app
+CMD [ "serve", "-s", "dist" ]
