@@ -10,6 +10,7 @@ pipeline {
         stage('Fetch the Source code'){
             //Clone SC from Github
             git branch: 'main', url 'https://github.com/alyaaraffat/HyperMarket.git'
+            sh "ls -l"
         }
 
         //-------------------------- Without Docker -------------------------------
