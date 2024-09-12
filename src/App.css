@@ -7,9 +7,12 @@ body {
 }
 
 /* Login Wrapper Styles */
-.login-wrapper, .register-wrapper {
+.login-wrapper {
   display: flex;
-  /* height: 100vh; */
+  height: 100vh;
+}
+.register-wrapper{
+  display:flex;
 }
 
 /* Image Section Styles */
