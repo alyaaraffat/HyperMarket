@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
 interface FormState {
-  username: string;
   email: string;
   password: string;
 }
 
 const Login: React.FC = () => {
-  const [formState, setFormState] = useState<FormState>({ username: '', email: '', password: '' });
+  const [formState, setFormState] = useState<FormState>({ email: '', password: '' });
   const [error, setError] = useState<string | null>(null);
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
 
@@ -18,9 +17,9 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const { username, email, password } = formState;
+    const { email, password } = formState;
 
-    if (!username || !email || !password) {
+    if (!email || !password) {
       setError('Please fill in all fields.');
       return;
     }
@@ -46,16 +45,7 @@ const Login: React.FC = () => {
         </div>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formState.username}
-              onChange={handleChange}
-            />
-          </div>
+          
           <div>
             <label htmlFor="email">Email</label>
             <input
@@ -87,7 +77,7 @@ const Login: React.FC = () => {
           <div className="btn-p">
             <button type="submit">Login</button>
             <p className="signup">
-              Don’t Have an Account? <a href="/Register">Sign Up</a>
+              Don’t Have an Account? <a href="/register">Sign Up</a>
             </p>
           </div>
         </form>
